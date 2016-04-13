@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+    <template id="news">
+        <h1></h1>
+        <p></p>
+    </template>
+
+    <wc-card>
+        <wc-card-name>Javier Vélez</wc-card-name>
+        <wc-card-twitter>javiervelez</wc-card-twitter>
+    </wc-card>
+
+    <script type="text/javascript">
+    (function() {
+            var p = Object.create(HTMLElement.prototype);
+            p.createdCallback = function() {
+                var root = this.createShadowRoot();
+                var template = document.querySelector('#news').content;
+
+            template.querySelector("h1").textContent = this.querySelector('wc-card-name').textContent;
+            template.querySelector("p").textContent = this.querySelector('wc-card-twitter').textContent;
+            root.appendChild(template.cloneNode(true));
+        };
+
+        document.registerElement('wc-card', {
+            prototype: p
+        });
+
+    })();
+    </script>
+</body>
+
+</html>

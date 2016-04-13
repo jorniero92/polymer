@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+    <template id="templateNewId">
+        <h1> </h1>
+        <div id="bodyId" class="body"></div>
+    </template>
+    <!-- container -->
+    <div id="new-1"></div>
+    <div id="new-2"></div>
+    
+    <script type="text/javascript">
+   
+    function createNew (container, title, body){ 
+        var root = document.querySelector(container).createShadowRoot();
+        var template = document.querySelector('#templateNewId').content;
+        template.querySelector("h1").textContent = title;
+        //bodyId es una clase
+        template.querySelector("#bodyId").textContent = body;
+
+        root.appendChild(template.cloneNode(true));
+
+    }
+    createNew("#new-1", "titulo 1", "bla bla 1");
+    createNew("#new-2", "titulo 2", "bla bla 2");
+    </script>
+</body>
+
+</html>
