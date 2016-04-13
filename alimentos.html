@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+    <div id="cart">
+        <div class="food meat"> Cow </div>
+        <div class="dessert fruit"> Orange </div>
+        <div class="food fish"> Cod </div>
+        <div class="food fruit"> Tomato </div>
+    </div>
+    <script type="text/javascript">
+    var outerHost = document.querySelector('#cart');
+    var outerRoot = outerHost.createShadowRoot();
+    //con cntent los contenidos se consumen
+    outerRoot.innerHTML =  "<h1>content 1:</h1> <content select='.food'>No hay nada</content>" + 
+                           "<h2>content 2:</h2> <content select='.home'>No hay nada</content>";
+    </script>
+</body>
+
+</html>

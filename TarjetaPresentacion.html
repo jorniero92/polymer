@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+    <div id="host">
+        <div class="name">Javier Vélez</div>
+        <div class="twitter">javiervelez</div>
+    </div>
+    <script type="text/javascript">
+        var outerHost = document.querySelector('#host');
+        var outerRoot = outerHost.createShadowRoot();
+
+        outerRoot.innerHTML = "content 1: <content select='.name'></content>"
+                            + "content 2: <content select='.twitter'></content>";
+    </script>
+</body>
+
+</html>

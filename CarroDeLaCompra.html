@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+    <div id="cart">
+        <div class="product">
+            <div class="name"> Gloves </div>
+            <div class="price"> 15 </div>
+        </div>
+        <div class="product">
+            <div class="name"> Oranges </div>
+            <div class="price"> 35 </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+    var outerHost = document.querySelector('#cart');
+    var outerRoot = outerHost.createShadowRoot();
+    //con content los contenidos se consumen
+    outerRoot.innerHTML = "<h1>content 1:</h1> <content select='.product'></content>";
+    </script>
+</body>
+
+</html>
