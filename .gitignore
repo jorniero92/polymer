@@ -21,3 +21,5 @@ dist/
 *.py*
 
 app.js
+
+*.txt

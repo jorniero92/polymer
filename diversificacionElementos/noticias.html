@@ -1,0 +1,15 @@
+
+<script type="text/javascript">
+    function createNew(container, title, body) {
+        var root = document.querySelector(container).createShadowRoot();
+        var template = document.querySelector('#wc-news').content;
+        template.querySelector("wc-news-title").textContent = title;
+        //bodyId es una clase
+        template.querySelector("#wc-news").textContent = body;
+
+        root.appendChild(template.cloneNode(true));
+
+    }
+    createNew("#new-1", "titulo 1", "bla bla 1");
+    createNew("#new-2", "titulo 2", "bla bla 2");
+</script>

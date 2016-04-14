@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="http://www.polymer-project.org/1.0/components/webcomponentsjs/webcomponents-lite.js"></script>
+    <title></title>
+</head>
+
+<body>
+    <button is="wc-button"> boton </button>
+    <script type="text/javascript">
+    var btn = Object.create(HTMLButtonElement.prototype);
+    btn.createdCallback = function(){
+    	this.addEventListener('click', function(){
+    		console.log("boton pulsado");
+    	});
+    };
+    var WCButton = document.registerElement('wc-button', {extends: 'button', prototype: btn});
+
+    </script>
+</body>
+
+</html>

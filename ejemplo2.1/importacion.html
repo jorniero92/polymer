@@ -1,0 +1,70 @@
+<link rel="import" href="http://www.polymer-project.org/1.0/components/polymer/polymer.html">
+</script>
+<dom-module id="wc-module">
+    <template>
+        <style>
+        style
+        </style>
+        <div class="movie">
+            <h1><div id="title">{{title}}</div></h1>
+            <div id="author">{{author}}</div>
+            <div id="image">{{image}}</div>
+            <div id="year">{{year}}</div>
+            <div id="code">{{code}}
+                <div>
+                    <button id="btn1">{{btn1}}</button>
+                    <button id="btn2">{{btn2}}</button>
+                    <button id="btn3">{{btn3}}</button>
+                </div>
+    </template>
+    <script>
+    (function() {
+        WCTicket = Polymer({
+            is: 'wc-module',
+            ready: function() {
+                this.title = "titulo 2";
+            },
+            properties: {
+                title: {
+                    type: String,
+                    value: "titulo1"
+                },
+                author: {
+                    type: String,
+                    value: "juan"
+                },
+                image: {
+                    type: String,
+                    value: "estoy aqui"
+                },
+                year: {
+                    type: String,
+                    value: "1992"
+
+                },
+
+                btn1: {
+                    type: String,
+                    value: "1"
+                },
+                btn2: {
+                    type: String,
+                    value: "2"
+                },
+                btn3: {
+                    type: String,
+                    value: "3"
+                },
+                code: {
+                    type: String,
+                    readOnly: true,
+                    computed: 'getCode(title,year)'
+                }
+            },
+            getCode: function(title, year) {
+                return title[0] + title[1] + year[0] + year[1];
+            }
+        });
+    })();
+    </script>
+</dom-module>

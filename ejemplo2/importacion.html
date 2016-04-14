@@ -1,0 +1,36 @@
+<link rel="import" href="http://www.polymer-project.org/1.0/components/polymer/polymer.html"></script>
+<dom-module id="wc-module">
+    <template>
+        <style></style>
+        <div class="movie">
+            <div id="title"></div>
+            <div id="author"></div>
+            <div id="image"></div>
+            <div id="year"></div>
+            <button id="btn1">1</button>
+            <button id="btn2">2</button>
+            <button id="btn3">3</button>
+        </div>
+    </template>
+    <script>
+    (function() {
+
+
+        WCTicket = Polymer({
+            is: 'wc-module',
+            ready: function() {
+                var dtitle = this.$.title;
+                var dauthor = this.$.author;
+                var dimage = this.$.image;
+                var dyear = this.$.year;
+
+                dtitle.textContent = "tittilo 1";
+                dauthor = "ojo autor";
+                dimage = "ojo imagen";
+                dyear = "ojo añoS";
+
+            }
+        });
+    })();
+    </script>
+</dom-module>
