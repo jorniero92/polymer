@@ -11,16 +11,19 @@
             <h1><div id="title">{{title}}</div></h1>
             <div id="year">{{year}}</div>
             <div id="code">{{code}}</div>
-            <button id="btn1">{{btn1}}</button>
-            <button id="btn2">{{btn2}}</button>
-            <button id="btn3">{{btn3}}</button>
+            <button id="btn1" value="18" on-tap="onBtnTap"> 18</button>
+            <button id="btn2" value="20" on-tap="onBtnTap"> 20</button>
+            <button id="btn3" value="23" on-tap="onBtnTap"> 23</button>
+            
         </div>
     </template>
     <script>
     (function() {
         WCTicket = Polymer({
             is: 'wc-movie',
-            ready: function() {},
+            listeners: {
+
+            },
             properties: {
                 title: {
                     type: String,
@@ -30,18 +33,6 @@
                     type: String,
                     value: " "
                 },
-                btn1: {
-                    type: String,
-                    value: "18"
-                },
-                btn2: {
-                    type: String,
-                    value: "20"
-                },
-                btn3: {
-                    type: String,
-                    value: "23"
-                },
                 code: {
                     type: String,
                     readOnly: true,
@@ -50,6 +41,19 @@
             },
             getCode: function(title, year) {
                 return title[0] + title[1] + year[0] + year[1];
+            },
+            onTap: function(e){
+                console.log("onTap");
+            },
+            onBtnTap: function(e){
+                console.log("onBtnTap");
+                e.stopPropagation();//para bubling
+                //generacion de evento en cada wc-movie hata el body
+                this.fire("wc-movie-session", {
+                    title: this.title,
+                    year: this.year,
+                    session: e.target.value,
+                });
             }
         });
     })();

@@ -1,42 +1,30 @@
 <link rel="import" href="http://www.polymer-project.org/1.0/components/polymer/polymer.html">
 <link rel="import" href="wc-movie.html">
 <link rel="import" href="wc-ticket.html">
-<link rel="import" href="wc-kiosko.html">
+<link rel="import" href="wc-kiosk.html">
 <dom-module id="wc-window">
     <template>
         <style>
         .window {
             background-color: yellow;
+            text-align: center;
         }
         </style>
-        <div class="window">
-            <h1><div id="windowId">{{windowId}}</div></h1>
-            <div id="employee">{{employee}}</div>
+        <div class="window" on-wc-movie-session="onSession">
+            <content></content>
         </div>
         <content>
         </content>
     </template>
     <script>
     (function() {
+        var ticketId = 0;
         WCWindow = Polymer({
             is: 'wc-window',
-            ready: function() {
-                var movies = this.getEffectiveChildren();
-                var ticketId = 0;
-                for (var i = 0; i < movies.length; i++) {
-                    movies[i].addEventListener('click', function(e) {
-                        if (e.target.tagName == 'BUTTON') {
-                            ticketId++;
-                            var ticket = new WCWindow();
-                            ticket.ticketId = "ticket id: " + ticketId;
-                            ticket.sesion = e.target.value;
-                            console.log("ticket: ",ticket);
-                            var kiosk = this.parentNode.querySelector(this.kioskId);
-                            kiosk.addTicket(ticket);
-                        }
-                    }.bind(this));
-                }
+             ready: function() {
+                console.log(this);
             },
+
             properties: {
                 windowId: {
                     type: String,
@@ -46,12 +34,24 @@
                     type: String,
                     value: " "
                 },
-                kioskId: {
-                    type: String,
-                    value: " "
+                kiosk: {
+                    type: Object
                 }
+            },
+            onSession: function(e, ctx) {
+                /*
+                var ticket = new WCTicket();
+                console.log("e.detail: ", e.detail);
+                ticketId++;
+                ticket.ticketId = "ticket id: " + ticketId;
+
+                ticket.title = e.detail.title;
+                ticket.year = e.detail.year;
+                ticket.session = e.detail.session;
+
+                kiosk.addTicket(ticket);*/
             }
-        }); 
+        });
     })();
     </script>
-    <dom-module id="wc-window">
+</dom-module>

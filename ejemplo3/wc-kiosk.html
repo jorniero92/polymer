@@ -1,14 +1,15 @@
 <link rel="import" href="http://www.polymer-project.org/1.0/components/polymer/polymer.html">
 <link rel="import" href="wc-ticket.html">
-<dom-module id="wc-kiosko">
+<dom-module id="wc-kiosk">
     <template>
         <style>
-        .kiosko {
+        .kiosk {
             background-color: green;
+            text-align: center;
         }
         </style>
-        <div class="kiosko">
-            <h1><div id="kioskoId">{{kioskoId}}</div></h1>
+        <div class="kiosk">
+            <h1><div id="kioskId">{{kioskId}}</div></h1>
             <div id="tiquets">{{tiquets}}</div>
         </div>
         <content>
@@ -17,23 +18,27 @@
     <script>
     (function() {
         WCKiosko = Polymer({
-            is: 'wc-kiosko',
+            is: 'wc-kiosk',
             ready: function() {},
             properties: {
-                kioskoId: {
+                kioskId: {
                     type: String,
-                    value: "Kiosko1"
+                    value: " Kiosko 1"
                 },
                 tiquets: {
                     type: String,
-                    value: "primer tiquet"
+                    observer: 'getTickets()'
                 }
             },
-            addTicket: function(ticket){
+            addTicket: function(ticket) {
                 console.log("addTicket ticket: ", ticket);
-                ticket.push = ticket;
+                tiquets.push(ticket);
+                this.$.tiquets.appendChild(ticket);
+            },
+            getTickets: function() {
+                return tiquets;
             }
         });
     })();
     </script>
-    <dom-module id="wc-kiosko">
+</dom-module>

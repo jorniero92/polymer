@@ -1,0 +1,37 @@
+<link rel="import" href="http://www.polymer-project.org/1.0/components/polymer/polymer.html">
+<link rel="import" href="wc-movie.html">
+<link rel="import" href="wc-window.html">
+<link rel="import" href="wc-kiosk.html">
+<dom-module id="wc-text">
+    <template>
+        <style>
+        .text {
+            background-color: green;
+            text-align: center;
+        }
+        </style>
+        <div class="text">
+            <wc-window kiosk="{{kiosk}}">
+                <wc-movie title="Stars Wars" year="2007"></wc-movie>
+                <wc-movie title="stars" year="2000"></wc-movie>
+                <wc-movie title="El señor de los anillos" year="2014"></wc-movie>
+            </wc-window>
+            <wc-kiosk id="kiosk1"></wc-kiosk>
+        </div>
+    </template>
+    <script>
+    (function() {
+        WCKiosko = Polymer({
+            is: 'wc-text',
+            ready: function() {
+                this.kiosk = this.$.kiosk1
+            },
+            properties: {
+                kiosk: {
+                    type: Object
+                }
+            },
+        });
+    })();
+    </script>
+</dom-module>
