@@ -1,0 +1,57 @@
+<link rel="import" href="http://www.polymer-project.org/1.0/components/polymer/polymer.html">
+<dom-module id="wc-movie">
+    <template>
+        <style>
+        .movie {
+            background-color: blue;
+            text-align: center;
+        }
+        </style>
+        <div class="movie">
+            <h1><div id="title">{{title}}</div></h1>
+            <div id="year">{{year}}</div>
+            <div id="code">{{code}}</div>
+            <button id="btn1">{{btn1}}</button>
+            <button id="btn2">{{btn2}}</button>
+            <button id="btn3">{{btn3}}</button>
+        </div>
+    </template>
+    <script>
+    (function() {
+        WCTicket = Polymer({
+            is: 'wc-movie',
+            ready: function() {},
+            properties: {
+                title: {
+                    type: String,
+                    value: " "
+                },
+                year: {
+                    type: String,
+                    value: " "
+                },
+                btn1: {
+                    type: String,
+                    value: "18"
+                },
+                btn2: {
+                    type: String,
+                    value: "20"
+                },
+                btn3: {
+                    type: String,
+                    value: "23"
+                },
+                code: {
+                    type: String,
+                    readOnly: true,
+                    computed: 'getCode(title,year)'
+                }
+            },
+            getCode: function(title, year) {
+                return title[0] + title[1] + year[0] + year[1];
+            }
+        });
+    })();
+    </script>
+</dom-module>

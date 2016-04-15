@@ -1,0 +1,57 @@
+<link rel="import" href="http://www.polymer-project.org/1.0/components/polymer/polymer.html">
+<link rel="import" href="wc-movie.html">
+<link rel="import" href="wc-ticket.html">
+<link rel="import" href="wc-kiosko.html">
+<dom-module id="wc-window">
+    <template>
+        <style>
+        .window {
+            background-color: yellow;
+        }
+        </style>
+        <div class="window">
+            <h1><div id="windowId">{{windowId}}</div></h1>
+            <div id="employee">{{employee}}</div>
+        </div>
+        <content>
+        </content>
+    </template>
+    <script>
+    (function() {
+        WCWindow = Polymer({
+            is: 'wc-window',
+            ready: function() {
+                var movies = this.getEffectiveChildren();
+                var ticketId = 0;
+                for (var i = 0; i < movies.length; i++) {
+                    movies[i].addEventListener('click', function(e) {
+                        if (e.target.tagName == 'BUTTON') {
+                            ticketId++;
+                            var ticket = new WCWindow();
+                            ticket.ticketId = "ticket id: " + ticketId;
+                            ticket.sesion = e.target.value;
+                            console.log("ticket: ",ticket);
+                            var kiosk = this.parentNode.querySelector(this.kioskId);
+                            kiosk.addTicket(ticket);
+                        }
+                    }.bind(this));
+                }
+            },
+            properties: {
+                windowId: {
+                    type: String,
+                    value: " "
+                },
+                employee: {
+                    type: String,
+                    value: " "
+                },
+                kioskId: {
+                    type: String,
+                    value: " "
+                }
+            }
+        }); 
+    })();
+    </script>
+    <dom-module id="wc-window">
