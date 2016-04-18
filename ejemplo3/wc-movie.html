@@ -1,37 +1,44 @@
 <link rel="import" href="http://www.polymer-project.org/1.0/components/polymer/polymer.html">
+<link rel="import" href="wc-cinema.html">
+<link rel="import" href="wc-kiosk.html">
+<link rel="import" href="wc-movie.html">
+<link rel="import" href="wc-test.html">
+<link rel="import" href="wc-ticket.html">
+<link rel="import" href="wc-window.html">
 <dom-module id="wc-movie">
-    <template>
+    <template id="movies">
         <style>
         .movie {
-            background-color: blue;
+            background-color: #63DFC5;
             text-align: center;
+            border: 10px outset #cccccc;
+            display: inline-block;
+            width: 30%;
         }
         </style>
         <div class="movie">
             <h1><div id="title">{{title}}</div></h1>
             <div id="year">{{year}}</div>
             <div id="code">{{code}}</div>
-            <button id="btn1" value="18" on-tap="onBtnTap"> 18</button>
-            <button id="btn2" value="20" on-tap="onBtnTap"> 20</button>
-            <button id="btn3" value="23" on-tap="onBtnTap"> 23</button>
-            
+            <button id="btn1" value="18:00" on-tap="onBtnTap"> 18:00 </button>
+            <button id="btn2" value="20:00" on-tap="onBtnTap"> 20:00 </button>
+            <button id="btn3" value="23:00" on-tap="onBtnTap"> 23:00 </button>
+            <br>
         </div>
     </template>
     <script>
     (function() {
-        WCTicket = Polymer({
+        WCMovies = Polymer({
             is: 'wc-movie',
-            listeners: {
+            ready: function() {
 
             },
             properties: {
                 title: {
-                    type: String,
-                    value: " "
+                    type: String
                 },
                 year: {
-                    type: String,
-                    value: " "
+                    type: String
                 },
                 code: {
                     type: String,
@@ -42,17 +49,14 @@
             getCode: function(title, year) {
                 return title[0] + title[1] + year[0] + year[1];
             },
-            onTap: function(e){
-                console.log("onTap");
-            },
-            onBtnTap: function(e){
-                console.log("onBtnTap");
-                e.stopPropagation();//para bubling
+            onBtnTap: function(e) {
+                console.log("onBtnTap OK");
+                e.stopPropagation(); //para bubling
                 //generacion de evento en cada wc-movie hata el body
                 this.fire("wc-movie-session", {
                     title: this.title,
                     year: this.year,
-                    session: e.target.value,
+                    session: e.target.value
                 });
             }
         });

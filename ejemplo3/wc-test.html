@@ -1,0 +1,42 @@
+<link rel="import" href="http://www.polymer-project.org/1.0/components/polymer/polymer.html">
+<link rel="import" href="wc-cinema.html">
+<link rel="import" href="wc-kiosk.html">
+<link rel="import" href="wc-movie.html">
+<link rel="import" href="wc-test.html">
+<link rel="import" href="wc-ticket.html">
+<link rel="import" href="wc-window.html">
+<dom-module id="wc-test">
+    <template id="test">
+        <style>
+        .test {
+            background-color: green;
+            text-align: center;
+        }
+        </style>
+        <div class="test">
+            <wc-cinema movies="{{movies}}"></wc-cinema>
+            <wc-window kiosk="{{kiosk}}" movies="[[movies]]"></wc-window>
+            <wc-kiosk id="kiosk1"></wc-kiosk>       
+        </div>
+    </template>
+    <script>
+    (function() {
+        WCKiosko = Polymer({
+            is: 'wc-test',
+            ready: function() {
+                this.kiosk = this.$.kiosk1
+            },
+            properties: {
+                kiosk: {
+                    type: WCKiosko
+                    //type: Object
+                },
+                movies:{
+                    type: Array,
+                    notify: true
+                }
+            },
+        });
+    })();
+    </script>
+</dom-module>

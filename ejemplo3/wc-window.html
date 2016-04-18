@@ -1,55 +1,69 @@
 <link rel="import" href="http://www.polymer-project.org/1.0/components/polymer/polymer.html">
-<link rel="import" href="wc-movie.html">
-<link rel="import" href="wc-ticket.html">
+<link rel="import" href="wc-cinema.html">
 <link rel="import" href="wc-kiosk.html">
+<link rel="import" href="wc-movie.html">
+<link rel="import" href="wc-test.html">
+<link rel="import" href="wc-ticket.html">
+<link rel="import" href="wc-window.html">
 <dom-module id="wc-window">
-    <template>
+    <template id="window">
         <style>
         .window {
             background-color: yellow;
             text-align: center;
         }
         </style>
-        <div class="window" on-wc-movie-session="onSession">
-            <content></content>
+        <div class="window">
+            <h1><div id="windowId"> {{ windowId }}</div></h1>
+            <h2><div id="employee">Le atiende {{ employee }} </div></h2>
+            <h3>Cartelera:</h3>
+           
+            <template is="dom-repeat" items="{{movies}}" as="movie">
+                <wc-movie title="{{movie.title}}" year="{{movie.year}}" on-wc-movie-session="onSession"></wc-movie>
+
+            </template>
         </div>
-        <content>
-        </content>
     </template>
     <script>
     (function() {
         var ticketId = 0;
         WCWindow = Polymer({
             is: 'wc-window',
-             ready: function() {
-                console.log(this);
+            ready: function() {
+                console.log("WCWindow", this);
+                console.log("WCWindow movies", this.movies);
             },
-
             properties: {
                 windowId: {
                     type: String,
-                    value: " "
+                    value: 'Ventana 1'
                 },
                 employee: {
                     type: String,
-                    value: " "
+                    value: 'Juan'
                 },
                 kiosk: {
-                    type: Object
+                    type: String
+                },
+                movies: {
+                    type: Array,
+                    notify: true
                 }
             },
-            onSession: function(e, ctx) {
-                /*
+            onSession: function(e) {
+                //console.log("kiosk: ", kiosk);
                 var ticket = new WCTicket();
-                console.log("e.detail: ", e.detail);
                 ticketId++;
+                console.log("ticketId: ", ticketId);
+                //console.log("ticketId: ", ticketId);
                 ticket.ticketId = "ticket id: " + ticketId;
-
                 ticket.title = e.detail.title;
                 ticket.year = e.detail.year;
                 ticket.session = e.detail.session;
-
-                kiosk.addTicket(ticket);*/
+                //console.log("ticket: ", ticket);
+                /*Accedemos a los tickets*/
+                //console.log("kiosk: ", this.kiosk);
+                this.kiosk.addTicket(ticket);
             }
         });
     })();

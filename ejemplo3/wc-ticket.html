@@ -1,15 +1,27 @@
 <link rel="import" href="http://www.polymer-project.org/1.0/components/polymer/polymer.html">
+<link rel="import" href="wc-cinema.html">
+<link rel="import" href="wc-kiosk.html">
+<link rel="import" href="wc-movie.html">
+<link rel="import" href="wc-test.html">
+<link rel="import" href="wc-ticket.html">
+<link rel="import" href="wc-window.html">
 <dom-module id="wc-ticket">
-    <template>
+    <template id="ticket">
         <style>
         .ticket {
             background-color: orange;
+            border-style: inset;
+            border-width: 15px;
+            text-align: center;
+            display: inline-block;
+            width: 30%;
         }
         </style>
         <div class="ticket">
-            <h1><div class="ticketId"> {{ ticketId }} </div></h1>
-            <div class="description"> {{ description }} </div>
-            <div class="sesion"> {{ sesion }} </div>
+            <h2><div class="ticketId"> {{ ticketId }} </div></h2>
+            <h3><div id="title"> {{ title }} </div>
+            <div id="session"> {{ session }}</div></h3>
+        </div>
     </template>
     <script>
     (function() {
@@ -18,18 +30,17 @@
             ready: function() {},
             properties: {
                 ticketId: {
-                    type: String,
-                    value: "ticket1s"
+                    type: String
                 },
-                description: {
+                title: {
                     type: String,
-                    value: "description"
+                    value: 'Ticket 1'
                 },
-                sesion: {
+                session: {
                     type: String,
-                    value: "primera"
+                    value: 'session'
                 }
-            }
+            },
         });
     })();
     </script>

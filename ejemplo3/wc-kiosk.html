@@ -1,7 +1,12 @@
 <link rel="import" href="http://www.polymer-project.org/1.0/components/polymer/polymer.html">
+<link rel="import" href="wc-cinema.html">
+<link rel="import" href="wc-kiosk.html">
+<link rel="import" href="wc-movie.html">
+<link rel="import" href="wc-test.html">
 <link rel="import" href="wc-ticket.html">
+<link rel="import" href="wc-window.html">
 <dom-module id="wc-kiosk">
-    <template>
+    <template id="kiosk">
         <style>
         .kiosk {
             background-color: green;
@@ -9,34 +14,35 @@
         }
         </style>
         <div class="kiosk">
-            <h1><div id="kioskId">{{kioskId}}</div></h1>
-            <div id="tiquets">{{tiquets}}</div>
+            <h1><div id="kiosk">{{kiosk}}</div></h1>
+            <div id="tickets">{{tickets}}</div>
+            <content></content>
         </div>
-        <content>
-        </content>
     </template>
     <script>
     (function() {
+        var tickets = [];
         WCKiosko = Polymer({
             is: 'wc-kiosk',
             ready: function() {},
             properties: {
-                kioskId: {
+                kiosk: {
                     type: String,
-                    value: " Kiosko 1"
+                    value: 'Kiosko'
                 },
-                tiquets: {
+                tickets: {
                     type: String,
                     observer: 'getTickets()'
                 }
             },
             addTicket: function(ticket) {
-                console.log("addTicket ticket: ", ticket);
-                tiquets.push(ticket);
-                this.$.tiquets.appendChild(ticket);
+                
+                tickets.push(ticket);
+                //console.log("addTicket ticket: ", ticket);
+                this.$.tickets.appendChild(ticket);
             },
             getTickets: function() {
-                return tiquets;
+                return tickets;
             }
         });
     })();
