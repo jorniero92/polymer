@@ -12,15 +12,22 @@
         .window {
             background-color: yellow;
             text-align: center;
+            color: var(--color);
+        }
+        
+        .title {
+            color: var(--color);
+            background: var(--fondo, blue);
         }
         </style>
         <div class="window">
+            <br>
+            <button id="btnChangeColor" on-tap="ChangeColor"> Change Color </button>
             <h1><div id="windowId"> {{ windowId }}</div></h1>
             <h2><div id="employee">Le atiende {{ employee }} </div></h2>
             <h3>Cartelera:</h3>
-           
             <template is="dom-repeat" items="{{movies}}" as="movie">
-                <wc-movie title="{{movie.title}}" year="{{movie.year}}" on-wc-movie-session="onSession"></wc-movie> 
+                <wc-movie title="{{movie.title}}" year="{{movie.year}}" on-wc-movie-session="onSession"></wc-movie>
             </template>
         </div>
     </template>
@@ -29,8 +36,7 @@
         var ticketId = 0;
         WCWindow = Polymer({
             is: 'wc-window',
-            ready: function() {
-            },
+            ready: function() {},
             properties: {
                 windowId: {
                     type: String,
@@ -62,6 +68,23 @@
                 /*Accedemos a los tickets*/
                 //console.log("kiosk: ", this.kiosk);
                 this.kiosk.addTicket(ticket);
+            },
+            ChangeColor: function() {
+                console.log("Change Color");
+                this.customStyle['--color'] = 'blue';
+                this.updateStyles();
+                /*
+                if (this.customStyle['--color'] === 'blue') {
+                    this.customStyle['--color'] = 'green';
+                    this.updateStyles();
+                    console.log("Azul");
+                } else {
+                    this.customStyle['--color'] = 'green';
+                    this.updateStyles();
+                    console.log("Verde");
+                }
+                //this.updateStyles();
+                */
             }
         });
     })();

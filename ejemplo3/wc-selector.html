@@ -11,6 +11,7 @@
         <div class="test">
             <br>
             <button id="btnChange" on-tap="onBtnTap"> Change </button>
+            <br>
             <content></content>
         </div>
     </template>
@@ -39,7 +40,7 @@
                 }
             },
             onBtnTap: function() {
-                console.log("tap");
+                console.log("Change movies");
                 this.selective = (this.selective + 1) % Polymer.dom(this).children.length;
                 this.data = Polymer.dom(this).children[this.selective][this.key];
             }
