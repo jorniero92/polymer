@@ -2,6 +2,7 @@
 <link rel="import" href="wc-cinema.html">
 <link rel="import" href="wc-kiosk.html">
 <link rel="import" href="wc-movie.html">
+<link rel="import" href="wc-selector.html">
 <link rel="import" href="wc-test.html">
 <link rel="import" href="wc-ticket.html">
 <link rel="import" href="wc-window.html">
@@ -19,8 +20,7 @@
             <h3>Cartelera:</h3>
            
             <template is="dom-repeat" items="{{movies}}" as="movie">
-                <wc-movie title="{{movie.title}}" year="{{movie.year}}" on-wc-movie-session="onSession"></wc-movie>
-
+                <wc-movie title="{{movie.title}}" year="{{movie.year}}" on-wc-movie-session="onSession"></wc-movie> 
             </template>
         </div>
     </template>
@@ -30,8 +30,6 @@
         WCWindow = Polymer({
             is: 'wc-window',
             ready: function() {
-                console.log("WCWindow", this);
-                console.log("WCWindow movies", this.movies);
             },
             properties: {
                 windowId: {

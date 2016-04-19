@@ -2,6 +2,7 @@
 <link rel="import" href="wc-cinema.html">
 <link rel="import" href="wc-kiosk.html">
 <link rel="import" href="wc-movie.html">
+<link rel="import" href="wc-selector.html">
 <link rel="import" href="wc-test.html">
 <link rel="import" href="wc-ticket.html">
 <link rel="import" href="wc-window.html">
@@ -14,7 +15,7 @@
         }
         </style>
         <div class="kiosk">
-            <h1><div id="kiosk">{{kiosk}}</div></h1>
+            <h1><div id="kioskoId">{{kioskoId}}</div></h1>
             <div id="tickets">{{tickets}}</div>
             <content></content>
         </div>
@@ -26,7 +27,7 @@
             is: 'wc-kiosk',
             ready: function() {},
             properties: {
-                kiosk: {
+                kioskoId: {
                     type: String,
                     value: 'Kiosko'
                 },

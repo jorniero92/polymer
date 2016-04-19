@@ -2,6 +2,7 @@
 <link rel="import" href="wc-cinema.html">
 <link rel="import" href="wc-kiosk.html">
 <link rel="import" href="wc-movie.html">
+<link rel="import" href="wc-selector.html">
 <link rel="import" href="wc-test.html">
 <link rel="import" href="wc-ticket.html">
 <link rel="import" href="wc-window.html">
@@ -14,28 +15,26 @@
         }
         </style>
         <div class="test">
-            <wc-cinema movies="{{movies}}"></wc-cinema>
+            <wc-selector data="{{movies}}" key="movies">
+                <wc-cinema movies="{{mov1}}" file-movie="A"></wc-cinema>
+                <wc-cinema movies="{{mov2}}" file-movie="B"></wc-cinema>
+            </wc-selector>
             <wc-window kiosk="{{kiosk}}" movies="[[movies]]"></wc-window>
-            <wc-kiosk id="kiosk1"></wc-kiosk>       
+            <wc-kiosk id="kiosk1"></wc-kiosk>
         </div>
     </template>
     <script>
     (function() {
-        WCKiosko = Polymer({
+        Polymer({
             is: 'wc-test',
             ready: function() {
-                this.kiosk = this.$.kiosk1
+                this.kiosk = this.$.kiosk1;
             },
             properties: {
                 kiosk: {
-                    type: WCKiosko
-                    //type: Object
-                },
-                movies:{
-                    type: Array,
-                    notify: true
+                    type: Object
                 }
-            },
+            }
         });
     })();
     </script>

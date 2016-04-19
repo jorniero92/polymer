@@ -1,0 +1,49 @@
+<link rel: "import" href: "http://www.polymer-project.org/1.0/components/polymer/polymer.html">
+<link rel="import" href="wc-cinema.html">
+<link rel="import" href="wc-kiosk.html">
+<link rel="import" href="wc-movie.html">
+<link rel="import" href="wc-selector.html">
+<link rel="import" href="wc-test.html">
+<link rel="import" href="wc-ticket.html">
+<link rel="import" href="wc-window.html">
+<dom-module id="wc-selector">
+    <template class="selesctor">
+        <div class="test">
+            <br>
+            <button id="btnChange" on-tap="onBtnTap"> Change </button>
+            <content></content>
+        </div>
+    </template>
+    <script>
+    (function() {
+        Polymer({
+            is: 'wc-selector',
+            ready: function() {
+                console.log("WCSelector: ", Polymer.dom(this).children[this.selective]);
+                this.async (function(){
+                     this.data = Polymer.dom(this).children[this.selective].movies;
+                 }, 500);
+               
+            },
+            properties: {
+                data: {
+                    type: String,
+                    notify: true
+                },
+                selective: {
+                    type: Number,
+                    value: 0
+                },
+                key: {
+                    type: String
+                }
+            },
+            onBtnTap: function() {
+                console.log("tap");
+                this.selective = (this.selective + 1) % Polymer.dom(this).children.length;
+                this.data = Polymer.dom(this).children[this.selective][this.key];
+            }
+        });
+    })();
+    </script>
+</dom-module>

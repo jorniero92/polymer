@@ -8,38 +8,45 @@
 <dom-module id="wc-cinema">
     <script>
     (function() {
+        var tickets = []; //
         WCCinema: Polymer({
             is: 'wc-cinema',
             ready: function() {
-                this.movies = [{
-                    "title": "Deadpool",
-                    "year": "2016"
-                }, {
-                    "title": "The Hunger Games: Mockingjay - Part 2",
-                    "year": "2015"
-                }, {
-                    "title": "Batman v Superman: Dawn of Justice",
-                    "year": "2016"
-                }, {
-                    "title": "Mad Max: Fury Road",
-                    "year": "2015"
-                }, {
-                    "title": "Zootopia",
-                    "year": "2016"
-                }, {
-                    "title": "Kung Fu Panda 3",
-                    "year": "2016"
-                }, {
-                    "title": "Interstellar",
-                    "year": "2014"
-                }];
+                if (this.fileMovie === 'A') {
+                    this.movies = [{
+                        "title": "Deadpool",
+                        "year": "2016"
+                    }, {
+                        "title": "The Hunger Games: Mockingjay - Part 2",
+                        "year": "2015"
+                    }];
+                } else if (this.fileMovie === 'B') {
+                    this.movies = [{
+                        "title": "Batman v Superman: Dawn of Justice",
+                        "year": "2016"
+                    }, {
+                        "title": "Mad Max: Fury Road",
+                        "year": "2015"
+                    }];
+                } else {
+                    this.movies = [{
+                        "title": "Kung Fu Panda 3",
+                        "year": "2016"
+                    }, {
+                        "title": "Interstellar",
+                        "year": "2014"
+                    }];
+                }
             },
             properties: {
                 movies: {
                     type: Array,
                     notify: true
+                },
+                fileMovie: {
+                    type: String
                 }
-            },
+            }
         });
     })();
     </script>
